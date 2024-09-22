@@ -1,4 +1,4 @@
-### **CloudFront Optimization for Next.js Application **
+### **CloudFront Optimization for Next.js Application**
 
 ---
 
