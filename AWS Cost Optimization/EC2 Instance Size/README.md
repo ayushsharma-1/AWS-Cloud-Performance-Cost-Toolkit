@@ -25,12 +25,9 @@ This document outlines a comprehensive solution for optimizing EC2 costs and aut
 
 ### Mathematical Breakdown of Total Costs
 
-\[
-\text{Total Cost} = \text{Compute Cost} + \text{Storage Cost} + \text{Data Transfer Cost}
-\]
-\[
-= 85.57 + 15 + 45 = 135.57 \text{ USD/month}
-\]
+Total Cost = Compute Cost + Storage Cost + Data Transfer Cost  
+Total Cost = 85.57 + 15 + 45 = 135.57 USD/month
+
 
 ---
 
