@@ -13,10 +13,9 @@ Comprehensive AWS cost optimization, monitoring, and CloudFront optimization for
    - **Action**: Leverage EC2 instance right-sizing and spot instances for less critical workloads.
    - **Potential Savings**: By moving underutilized instances to smaller sizes or switching to spot instances, savings of up to 70% are possible. However, the trade-off would be potential instance termination in the case of spot instances.
 
-3. **CloudWatch ($73.68):**
-   - **Action**: Optimize log retention and reduce the frequency of high-resolution alarms.
-   - **Potential Savings**: By adjusting log retention policies and limiting high-resolution metrics, unnecessary costs for data retention and extra alarms can be eliminated. Trade-offs may involve a reduced window for troubleshooting.
-
+3. **Snapshots:**
+   - **Action**: Regularly review and delete outdated or unnecessary snapshots.
+   - **Potential Savings**: Deleting unnecessary snapshots can lead to significant cost reductions in storage. Establishing a retention policy can help manage snapshot lifecycles effectively.
 
 ### 2. **Monitoring and Alerting (25 points)**
 
@@ -54,7 +53,6 @@ A well-designed CloudWatch dashboard should provide real-time visibility into th
 2. Subscribe team members via email or SMS.
 3. Attach the SNS topic to CloudWatch alarms for real-time notifications.
 
-
 ### 3. **CloudFront Optimization for Next.js Application (50 points)**
 
 **a) High Availability:**
@@ -86,8 +84,3 @@ A well-designed CloudWatch dashboard should provide real-time visibility into th
      2. **Cache TTL Tuning**: Adjust Time-to-Live (TTL) values to cache content longer, reducing origin fetches.
      3. **Edge Locations**: Leverage all available CloudFront edge locations for quicker content delivery to users globally.
    - **Measurement**: Use Amazon CloudWatch and CloudFront logs to measure response times and overall load performance before and after optimization.
-
-
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
