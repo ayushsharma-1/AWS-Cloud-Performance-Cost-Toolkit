@@ -4,7 +4,7 @@
 
 The proposed CloudWatch dashboard will provide an overview of critical metrics for AWS resources, specifically EC2 instances, Lambda functions, and S3 buckets. This will help you quickly assess performance and detect potential issues.
 
-#### CloudWatch Dashboard Design
+### CloudWatch Dashboard Design
 The CloudWatch dashboard can include widgets for:
 - **EC2 Instances**:  
   - CPU Utilization  
@@ -26,7 +26,7 @@ The CloudWatch dashboard can include widgets for:
   
 - **Alarm Status**
 
-##### Mockup Description
+### Mockup Description
 1. **EC2 CPU Utilization**
    - **Type**: Line graph
    - **Metric**: `CPUUtilization`
