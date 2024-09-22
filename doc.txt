@@ -1,0 +1,41 @@
+Looking at the traffic pattern in the first image (Lambda function cost over time), we see that most days have very low usage, with a significant spike on specific dates. This kind of pattern suggests that Lambda functions don't require high resources all the time, only during certain events.
+
+Here are my thoughts on optimizing Lambda costs based on this pattern:
+
+### **1. Dynamic Provisioned Concurrency with Auto Scaling (Event-Based Triggers)**
+
+Instead of maintaining Provisioned Concurrency (PC) consistently, you can automate the scaling of concurrency based on traffic patterns using **EventBridge** or **Scheduled Scaling**:
+
+- **Explanation**: Since traffic spikes happen only on specific days, you can automate the switch to a higher provisioned concurrency level during these high-traffic periods. AWS EventBridge (or CloudWatch Events) can trigger an increase in Lambda provisioned concurrency when traffic is expected, such as during business hours, daily data processing jobs, or other predictable patterns.
+  
+- **Action**: Use **Application Auto Scaling** or schedule scaling rules to automatically increase or decrease the concurrency limits of Lambda functions based on time of day or expected events. For instance, on the 18th-21st in the graph, you can increase the concurrency and reduce it afterward to a lower level.
+
+- **Potential Savings**: By scaling concurrency up only during high-traffic periods and reducing it during low-traffic times, you save on the costs associated with keeping provisioned concurrency constantly available. This method could potentially cut your provisioned concurrency costs by 30-40% during low-traffic periods while maintaining performance during peak hours.
+  
+- **Trade-offs**: You may need to accurately predict your traffic patterns to avoid performance degradation. If unexpected spikes occur outside the scheduled time, it could lead to higher latency due to cold starts.
+
+### **2. Lambda on Demand with Reserved Instances for Specific Functions**
+
+Since your Lambda traffic pattern seems to be flat with occasional spikes, another option is to rely on **on-demand** invocation most of the time, but use **Reserved Instances** for predictable workloads.
+
+- **Explanation**: For the majority of the days, you don't need high levels of concurrency. You could run Lambda purely on-demand, without PC. For predictable spikes, you could reserve specific instances to handle those bursts.
+
+- **Action**: Use **AWS Lambda Reserved Instances** for specific periods (like the spike in the image) where traffic is predictable and high, while scaling down to on-demand functions during lower traffic periods.
+
+- **Potential Savings**: Reserved Instances offer discounts compared to on-demand pricing, so during high-traffic days, you can lock in lower costs. This approach can reduce overall Lambda costs by 25-30%.
+
+- **Trade-offs**: Reserved Instances work best for consistent and predictable workloads. If traffic spikes are irregular or unpredictable, it might be less efficient than simply using on-demand Lambda or auto-scaling.
+
+### **3. Use **AWS Step Functions** for High Traffic Workflows**
+   - **Explanation**: If the spike in traffic is due to a specific workflow that is very resource-heavy, you could move parts of the workload to **AWS Step Functions**, which allow you to orchestrate Lambda executions and reduce concurrent invocations. Step Functions allow for better control of workflows by breaking them into smaller, manageable steps, reducing the memory and execution time of individual Lambdas.
+
+   - **Potential Savings**: By optimizing workflow control and ensuring that each Lambda function performs minimal tasks, you can reduce costs by optimizing memory and execution time. Savings could be around 15-25% if optimized properly.
+   
+   - **Trade-offs**: Implementing Step Functions may require redesigning your current Lambda-based architecture, which may take significant effort and testing. However, it can significantly reduce complexity in handling spikes by introducing flow control.
+
+
+### **Conclusion:**
+
+Based on your graph, using dynamic, scheduled provisioning of Lambda concurrency looks like the most effective strategy to save costs while maintaining high performance during peak times. Combining it with auto-scaling and reserved instances can bring further savings. 
+
+If you want a traffic graph that shows requests/invocations, we could explore even finer-grained scaling options. Just let me know what you need!
