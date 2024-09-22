@@ -10,7 +10,7 @@
    - **Potential Savings**: Reducing function execution time and adjusting memory can lead to savings of 20-30%.
    - **Trade-Off**: This requires performance testing and might involve reworking existing function logic.
 
-3. **CloudWatch Logs & Monitoring ($73.69)**
-   - **Optimization Suggestion**: Set appropriate **retention policies** for logs. Delete unnecessary logs or move them to **S3** for long-term, cheaper storage.
-   - **Potential Savings**: CloudWatch cost reduction by 40-50% through better log retention management.
-   - **Trade-Off**: Losing quick access to logs that are moved or deleted, which could impact troubleshooting.
+3. **Snapshots Cleanup & Optimization**
+   - **Optimization Suggestion**: Remove outdated EC2 and S3 snapshots or move them to cheaper storage tiers such as S3 Glacier for long-term retention.
+   - **Potential Savings**: Potential savings of 40-50% by deleting unnecessary snapshots or archiving them in lower-cost storage solutions like S3 Glacier.
+   - **Trade-Off**: Deleting snapshots or moving them to cold storage may delay access to backups, impacting recovery time in the event of system failures or data restoration needs.
