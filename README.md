@@ -91,7 +91,3 @@ A well-designed CloudWatch dashboard should provide real-time visibility into th
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-Based on your graph, using dynamic, scheduled provisioning of Lambda concurrency looks like the most effective strategy to save costs while maintaining high performance during peak times. Combining it with auto-scaling and reserved instances can bring further savings. 
-
-If you want a traffic graph that shows requests/invocations, we could explore even finer-grained scaling options. Just let me know what you need!
-
