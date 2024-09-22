@@ -1,4 +1,4 @@
-### **CloudFront Optimization for Next.js Application (50 points)**
+### **CloudFront Optimization for Next.js Application **
 
 ---
 
