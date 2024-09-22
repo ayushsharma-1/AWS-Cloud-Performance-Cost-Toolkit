@@ -88,7 +88,7 @@ A well-designed CloudWatch dashboard should provide real-time visibility into th
    - **Measurement**: Use Amazon CloudWatch and CloudFront logs to measure response times and overall load performance before and after optimization.
 
 
-
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Looking at the traffic pattern in the first image (Lambda function cost over time), we see that most days have very low usage, with a significant spike on specific dates. This kind of pattern suggests that Lambda functions don't require high resources all the time, only during certain events.
 
