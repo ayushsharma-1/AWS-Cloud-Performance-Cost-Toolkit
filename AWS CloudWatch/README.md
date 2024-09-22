@@ -4,6 +4,145 @@
 
 The proposed CloudWatch dashboard will provide an overview of critical metrics for AWS resources, specifically EC2 instances, Lambda functions, and S3 buckets. This will help you quickly assess performance and detect potential issues.
 
+#### CloudWatch Dashboard Design
+The CloudWatch dashboard can include widgets for:
+- **EC2 Instances**:  
+  - CPU Utilization  
+  - Network Traffic (In/Out)  
+  - Disk Read/Write Operations  
+  - Status Check Failed  
+  
+- **S3 Buckets**:  
+  - Bucket Size  
+  - Number of Objects  
+  - Error Rates (4xx/5xx)  
+  - Data Transfer (Uploaded/Downloaded)  
+  
+- **Lambda Functions**:  
+  - Invocation Count  
+  - Error Count  
+  - Function Duration  
+  - Throttles  
+  
+- **Alarm Status**
+
+##### Mockup Description
+1. **EC2 CPU Utilization**
+   - **Type**: Line graph
+   - **Metric**: `CPUUtilization`
+   - **Instance ID**: `i-0123456789abcdef0`
+   - **Period**: 60 seconds
+   - **Stat**: Average
+   - **Title**: "EC2 CPU Utilization"
+   - **Description**: This widget tracks the average CPU usage for the specified EC2 instance, allowing real-time monitoring of performance.
+
+2. **EC2 Network In/Out**
+   - **Type**: Line graph (dual metric)
+   - **Metrics**: `NetworkIn`, `NetworkOut`
+   - **Instance ID**: `i-0123456789abcdef0`
+   - **Period**: 300 seconds (5 minutes)
+   - **Stat**: Sum
+   - **Title**: "EC2 Network In/Out"
+   - **Description**: This widget shows the total incoming and outgoing network traffic for the EC2 instance over 5-minute intervals.
+
+3. **EC2 Disk Read/Write Operations**
+   - **Type**: Line graph (dual metric)
+   - **Metrics**: `DiskReadOps`, `DiskWriteOps`
+   - **Instance ID**: `i-0123456789abcdef0`
+   - **Period**: 300 seconds
+   - **Stat**: Sum
+   - **Title**: "EC2 Disk Read/Write Ops"
+   - **Description**: This widget shows the number of disk read and write operations, helping monitor storage performance.
+
+4. **EC2 Status Check Failed**
+   - **Type**: Line graph
+   - **Metric**: `StatusCheckFailed`
+   - **Instance ID**: `i-0123456789abcdef0`
+   - **Period**: 60 seconds
+   - **Stat**: Minimum
+   - **Title**: "EC2 Status Check Failed"
+   - **Description**: This widget tracks EC2 status checks, providing insight into whether any instance-level or system-level failures occurred.
+
+5. **S3 Bucket Size**
+   - **Type**: Line graph
+   - **Metric**: `BucketSizeBytes`
+   - **Bucket Name**: `your-bucket-name`
+   - **Period**: 86400 seconds (1 day)
+   - **Stat**: Average
+   - **Title**: "S3 Bucket Size"
+   - **Description**: This widget displays the average size of the specified S3 bucket, helping to monitor storage usage trends.
+
+6. **S3 Number of Objects**
+   - **Type**: Line graph
+   - **Metric**: `NumberOfObjects`
+   - **Bucket Name**: `your-bucket-name`
+   - **Period**: 300 seconds
+   - **Stat**: Average
+   - **Title**: "S3 Number of Objects"
+   - **Description**: Tracks the average number of objects in the bucket, useful for monitoring storage changes.
+
+7. **S3 4xx/5xx Errors**
+   - **Type**: Line graph (dual metric)
+   - **Metrics**: `4xxErrors`, `5xxErrors`
+   - **Bucket Name**: `your-bucket-name`
+   - **Period**: 300 seconds
+   - **Stat**: Sum
+   - **Title**: "S3 4xx/5xx Errors"
+   - **Description**: This widget displays the total number of 4xx and 5xx errors encountered, providing insight into potential request failures.
+
+8. **S3 Data Transfer (Bytes Uploaded/Downloaded)**
+   - **Type**: Line graph (dual metric)
+   - **Metrics**: `BytesDownloaded`, `BytesUploaded`
+   - **Bucket Name**: `your-bucket-name`
+   - **Period**: 300 seconds
+   - **Stat**: Sum
+   - **Title**: "S3 Data Transfer"
+   - **Description**: Tracks the total amount of data uploaded and downloaded from the specified S3 bucket.
+
+9. **Lambda Invocations**
+   - **Type**: Bar chart
+   - **Metric**: `Invocations`
+   - **Function Name**: `your-lambda-function`
+   - **Period**: 60 seconds
+   - **Stat**: Sum
+   - **Title**: "Lambda Invocations"
+   - **Description**: This widget tracks the number of Lambda function invocations, helping monitor usage and performance.
+
+10. **Lambda Errors**
+    - **Type**: Bar chart
+    - **Metric**: `Errors`
+    - **Function Name**: `your-lambda-function`
+    - **Period**: 60 seconds
+    - **Stat**: Sum
+    - **Title**: "Lambda Errors"
+    - **Description**: Displays the total number of errors for the Lambda function, enabling quick detection of issues.
+
+11. **Lambda Duration**
+    - **Type**: Line graph
+    - **Metric**: `Duration`
+    - **Function Name**: `your-lambda-function`
+    - **Period**: 60 seconds
+    - **Stat**: Average
+    - **Title**: "Lambda Duration"
+    - **Description**: Shows the average duration of the Lambda function execution, useful for performance tuning.
+
+12. **Lambda Throttles**
+    - **Type**: Bar chart
+    - **Metric**: `Throttles`
+    - **Function Name**: `your-lambda-function`
+    - **Period**: 60 seconds
+    - **Stat**: Sum
+    - **Title**: "Lambda Throttles"
+    - **Description**: Tracks the number of throttled Lambda function invocations, helping to identify resource limits.
+
+13. **Alarm Status**
+    - **Type**: Text
+    - **Content**: Displays a markdown table showing the status of key alarms.
+    - **Title**: "Alarm Status"
+    - **Description**: Provides a quick overview of important alarms, such as high CPU or S3 errors, in a table format.
+
+
+
 ### 1.1 Dashboard Widgets Configuration
 
 Below is a JSON configuration for the dashboard widgets. Each widget will visualize specific metrics for monitoring performance.
