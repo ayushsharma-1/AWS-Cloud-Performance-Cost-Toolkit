@@ -85,5 +85,4 @@ A well-designed CloudWatch dashboard should provide real-time visibility into th
      3. **Edge Locations**: Leverage all available CloudFront edge locations for quicker content delivery to users globally.
    - **Measurement**: Use Amazon CloudWatch and CloudFront logs to measure response times and overall load performance before and after optimization.
 
-
 ####This is an assignment for internship at filesure aws startup for devops cloud engineer role 
