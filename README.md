@@ -1,7 +1,7 @@
 # AWS-Cloud-Performance-Cost-Toolkit
 Comprehensive AWS cost optimization, monitoring, and CloudFront optimization for Next.js apps.
 
-### 1. **AWS Cost Optimization (25 points)**
+### 1. **AWS Cost Optimization**
 
 **Key Areas for Cost Reduction:**
 
@@ -17,7 +17,7 @@ Comprehensive AWS cost optimization, monitoring, and CloudFront optimization for
    - **Action**: Regularly review and delete outdated or unnecessary snapshots.
    - **Potential Savings**: Deleting unnecessary snapshots can lead to significant cost reductions in storage. Establishing a retention policy can help manage snapshot lifecycles effectively.
 
-### 2. **Monitoring and Alerting (25 points)**
+### 2. **Monitoring and Alerting**
 
 **CloudWatch Dashboard Design:**
 
@@ -84,5 +84,3 @@ A well-designed CloudWatch dashboard should provide real-time visibility into th
      2. **Cache TTL Tuning**: Adjust Time-to-Live (TTL) values to cache content longer, reducing origin fetches.
      3. **Edge Locations**: Leverage all available CloudFront edge locations for quicker content delivery to users globally.
    - **Measurement**: Use Amazon CloudWatch and CloudFront logs to measure response times and overall load performance before and after optimization.
-
-#### This is an assignment for internship at filesure aws startup for devops cloud engineer role 
