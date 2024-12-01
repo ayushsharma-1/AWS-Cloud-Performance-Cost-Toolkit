@@ -1,5 +1,5 @@
 ### AWS Cost Optimization
-
+---
 1. **EC2 Instances ($135.57)**
    - **Optimization Suggestion**: Consider **Right-Sizing** EC2 instances by evaluating the performance metrics. If the current instances are underutilized, downgrade to smaller instance types or switch to **Spot Instances** for non-critical workloads.
    - **Potential Savings**: Up to 30-50% for Spot Instances or right-sizing instances to match actual resource needs.
